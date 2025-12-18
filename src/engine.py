@@ -47,6 +47,37 @@ class AlignerEngine:
         
         return H
 
+    def compute_affine_matrix(self, seq1, seq2, score_dict, gop=-11, gep=-1):
+        """
+        Assignment 3: Implements Needleman-Wunsch with Affine Gap Penalties.
+        gop: Gap Opening Penalty (high cost)
+        gep: Gap Extension Penalty (low cost)
+        """
+        n, m = len(seq1), len(seq2)
+        
+        M = np.full((n + 1, m + 1), -np.inf)
+        I = np.full((n + 1, m + 1), -np.inf)
+        D = np.full((n + 1, m + 1), -np.inf)
+        
+        M[0, 0] = 0
+        for i in range(1, n + 1):
+            I[i, 0] = gop + (i - 1) * gep
+        for j in range(1, m + 1):
+            D[0, j] = gop + (j - 1) * gep
+
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                char1, char2 = seq1[i-1], seq2[j-1]
+                score = score_dict.get((char1, char2), -4)
+                
+                M[i, j] = score + max(M[i-1, j-1], I[i-1, j-1], D[i-1, j-1])
+                
+                I[i, j] = max(M[i-1, j] + gop, I[i-1, j] + gep)
+                
+                D[i, j] = max(M[i, j-1] + gop, D[i, j-1] + gep)
+        
+        return M, I, D
+
     def find_threshold_hits(self, H, threshold):
         """
         Returns coordinates of all cells with score >= threshold.
