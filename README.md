@@ -15,17 +15,25 @@ A Python implementation of classic dynamic programming algorithms for biological
 
 ### Global Alignment (Needleman-Wunsch)
 The engine computes the optimal global score using the recurrence:
-$$H_{i,j} = \max \begin{cases} 
-H_{i-1,j-1} + S(a_i, b_j) & \text{(Match/Mismatch)} \\
-H_{i-1,j} + d & \text{(Deletion)} \\
-H_{i,j-1} + d & \text{(Insertion)}
-\end{cases}$$
+$$
+H_{i,j} = \max \begin{cases} 
+H_{i-1,j-1} + S(a_i, b_j) & \text{(Match/Mismatch)} \\ 
+H_{i-1,j} + d & \text{(Deletion)} \\ 
+H_{i,j-1} + d & \text{(Insertion)} 
+\end{cases}
+$$
 
 ### Affine Gap Model
 To better model biological events, we separate gap opening ($o$) and extension ($e$):
-$$I_{i,j} = \max(M_{i-1, j} - o, I_{i-1, j} - e)$$
-$$D_{i,j} = \max(M_{i, j-1} - o, D_{i, j-1} - e)$$
-
+$$
+M_{i,j} = M_{i-1,j-1} + S(a_i, b_j)
+$$
+$$
+I_{i,j} = \max(M_{i-1, j} - o, I_{i-1, j} - e)
+$$
+$$
+D_{i,j} = \max(M_{i, j-1} - o, D_{i, j-1} - e)
+$$
 ---
 
 ## 🛠️ Usage
