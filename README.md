@@ -35,6 +35,7 @@ I_{i,j} &= \max(M_{i-1,j} - o, I_{i-1,j} - e) \\
 D_{i,j} &= \max(M_{i,j-1} - o, D_{i,j-1} - e)
 \end{aligned}
 $$
+
 ---
 
 ## 🛠️ Usage
