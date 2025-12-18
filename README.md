@@ -17,7 +17,12 @@ A Python implementation of classic dynamic programming algorithms for biological
 The engine computes the optimal global score $H_{i,j}$ using the following recurrence relation:
 
 $$
-H_{i,j} = \max \begin{cases} H_{i-1,j-1} + S(a_i, b_j) & \text{Match/Mismatch} \\ H_{i-1,j} + d & \text{Deletion} \\ H_{i,j-1} + d & \text{Insertion} \end{cases}
+H_{i,j} = \max 
+\begin{cases} 
+H_{i-1,j-1} + S(a_i, b_j) & \text{(Match/Mismatch)} \\
+H_{i-1,j} + d & \text{(Deletion)} \\
+H_{i,j-1} + d & \text{(Insertion)}
+\end{cases}
 $$
 
 ### Affine Gap Model
@@ -30,7 +35,6 @@ I_{i,j} &= \max(M_{i-1,j} - o, I_{i-1,j} - e) \\
 D_{i,j} &= \max(M_{i,j-1} - o, D_{i,j-1} - e)
 \end{aligned}
 $$
-
 ---
 
 ## 🛠️ Usage
