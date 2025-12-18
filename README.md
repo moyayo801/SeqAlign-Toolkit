@@ -33,8 +33,8 @@ $$D_{i,j} = \max(M_{i, j-1} - o, D_{i, j-1} - e)$$
 To run the specific implementations for the research tasks, use the provided scripts in the `usage/` directory:
 
 1. **DNA Global Alignment (Task 1):**
-   ```bash
-   python usage/dna_global_align.py
+```bash
+python usage/dna_global_align.py
 
 ```
 
