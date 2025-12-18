@@ -14,20 +14,22 @@ A Python implementation of classic dynamic programming algorithms for biological
 ## 🧬 Mathematical Foundations
 
 ### Global Alignment (Needleman-Wunsch)
-The engine computes the optimal global score using the recurrence:
+The engine computes the optimal global score $H_{i,j}$ using the following recurrence relation:
+
 $$
-H_{i,j} = \max 
-\begin{cases} 
-H_{i-1,j-1} + S(a_i, b_j) & \text{(Match/Mismatch)} \\
-H_{i-1,j} + d & \text{(Deletion)} \\
-H_{i,j-1} + d & \text{(Insertion)}
-\end{cases}
+H_{i,j} = \max \begin{cases} H_{i-1,j-1} + S(a_i, b_j) & \text{Match/Mismatch} \\ H_{i-1,j} + d & \text{Deletion} \\ H_{i,j-1} + d & \text{Insertion} \end{cases}
 $$
 
 ### Affine Gap Model
-To better model biological events, we separate gap opening ($o$) and extension ($e$):
-$$I_{i,j} = \max(M_{i-1, j} - o, I_{i-1, j} - e)$$
-$$D_{i,j} = \max(M_{i, j-1} - o, D_{i, j-1} - e)$$
+To better model biological events, we separate gap opening ($o$) and extension ($e$). The scoring is distributed across three states (Match, Insertion, Deletion):
+
+$$
+\begin{aligned}
+M_{i,j} &= \max(M_{i-1,j-1}, I_{i-1,j-1}, D_{i-1,j-1}) + S(a_i, b_j) \\
+I_{i,j} &= \max(M_{i-1,j} - o, I_{i-1,j} - e) \\
+D_{i,j} &= \max(M_{i,j-1} - o, D_{i,j-1} - e)
+\end{aligned}
+$$
 
 ---
 
