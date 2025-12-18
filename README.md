@@ -79,5 +79,3 @@ The toolkit generates heatmaps to analyze the scoring landscape. In local alignm
 * `src/`: Core engine, scoring data, and visualization modules.
 * `usage/`: Demonstration scripts for different alignment scenarios.
 * `data/`: Sample sequence files in FASTA-like format.
-
-```
