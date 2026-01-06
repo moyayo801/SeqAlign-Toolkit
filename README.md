@@ -1,8 +1,8 @@
-# 🧬 SeqAlign-Toolkit: Advanced Biological Sequence Alignment
+#  SeqAlign-Toolkit: Advanced Biological Sequence Alignment
 
 A Python implementation of classic dynamic programming algorithms for biological sequence analysis. This toolkit was developed to demonstrate expertise in algorithm design, evolutionary scoring matrices, and biological data processing.
 
-## 🚀 Features
+##  Features
 
 * **Needleman-Wunsch (Global Alignment):** Full sequence comparison using match/mismatch or substitution matrices.
 * **Smith-Waterman (Local Alignment):** Identification of high-similarity regions with a zero-floor scoring rule.
@@ -11,7 +11,7 @@ A Python implementation of classic dynamic programming algorithms for biological
 * **Substitution Matrices:** Built-in support for **BLOSUM62** (Proteins) and Nucleotide matrices (DNA/RNA).
 * **Visual Analytics:** Heatmap generation for scoring matrices and gap states.
 
-## 🧬 Mathematical Foundations
+##  Mathematical Foundations
 
 ### Global Alignment (Needleman-Wunsch)
 The engine computes the optimal global score $H_{i,j}$ using the following recurrence relation:
@@ -38,7 +38,7 @@ $$
 
 ---
 
-## 🛠️ Usage
+##  Usage
 
 To run the specific implementations for the research tasks, use the provided scripts in the `usage/` directory:
 
@@ -70,7 +70,7 @@ python usage/local_search_top_k.py
 
 
 
-## 📊 Visualizations
+##  Visualizations
 
 The toolkit generates heatmaps to analyze the scoring landscape. In local alignment mode, it highlights high-scoring sub-segments where Score \geq T.
 
